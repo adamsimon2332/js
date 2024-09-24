@@ -1,0 +1,52 @@
+.tarolo {
+    background-color: yellow;
+    padding: 0;
+    margin: 20px 0;
+    list-style-type: none;
+}
+
+.lila {
+    width: 100px;
+    height: 100px;
+    background-color: purple;
+}
+
+.feladat-1 {
+    width: 800px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.feladat-1 .zold, .feladat-1 .sarga {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+.feladat-2 {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+.feladat-3 {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.feladat-4 {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 10px;
+}

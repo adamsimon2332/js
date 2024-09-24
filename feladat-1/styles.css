@@ -1,6 +1,13 @@
 .tarolo {
     display: flex;
+    flex-direction: row;
 }
+
+.tarolo:nth-of-type(4) {
+    flex-direction: column;
+    height: 600px;
+}
+
 
 .tarolo > #zold, #sarga, #lila {
     width: 100%;
@@ -30,8 +37,8 @@
 }
 
 .tarolo > #zold4, #sarga4, #lila4 {
-    width: 100%;
-    height: 300px;
+    width: auto;
+    height: 100px;
 }
 
 .tarolo > #zold, #zold2, #zold3, #zold4 {
