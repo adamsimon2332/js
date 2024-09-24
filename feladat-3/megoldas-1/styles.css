@@ -1,0 +1,33 @@
+.lila, .tarolo2 {
+    display: flex;
+}
+
+.tarolo2 > .sarga, .zold {
+    width: 100%;
+    height: 600px;
+}
+
+.tarolo2 > .sarga{
+    background-color: yellow;
+    flex: 4;
+}
+
+.tarolo2 > .zold {
+    background-color: green;
+    flex: 2;
+}
+
+.lila {
+    width: 100%;
+    height: 100px;
+    background-color: purple;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.kek {
+    width: 125px;
+    height: 50px;
+    background-color: lightblue;
+    margin-left: 20px;
+}
