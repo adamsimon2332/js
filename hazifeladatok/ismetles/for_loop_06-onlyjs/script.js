@@ -1,6 +1,6 @@
 import input from "../input.js"
 
-const number = await parseInt(input("Enter a number: "));
+const number = parseInt(await input("Enter a number: "));
 let factorial = 1;
 
 if (number < 0) {
