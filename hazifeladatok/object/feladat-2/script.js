@@ -10,16 +10,15 @@ class WeeklySchedule {
 
 const lessons = [];
 
-for (let i = 0; 7 != i; i++) {
-    for (let k = 0; 12 != k; k++) {
-        const schedule = await input("Add meg a tantárgy nevét: ");
-        lessons.push(new WeeklySchedule(i, i, schedule));
+for (let i = 1; 6 != i; i++) {
+    for (let k = 1; 13 != k; k++) {
+        const subject = await input("Add meg a tantárgy nevét: ");
+        lessons.push(new WeeklySchedule(i, k, subject));
     }
-    const schedule = await input("Add meg a tantárgy nevét: ");
-    lessons.push(new WeeklySchedule(i, i, schedule));
 }
 
-for (let i = 0; persons.length != i; i++) {
-    console.log(`Név: ${persons[i].name}`);
-    console.log(`Email: ${persons[i].email}`);
+for (let i = 0; lessons.length != i; i++) {
+    console.log(`Nap: ${lessons[i].day}.`);
+    console.log(`Óra: ${lessons[i].hour}.`);
+    console.log(`Tantárgy: ${lessons[i].subject}`);
 }
