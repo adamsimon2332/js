@@ -1,0 +1,1 @@
+await parseInt(input("Add meg Mari néni lekvárját dl-ben (0 és 200 között): "));
