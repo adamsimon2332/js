@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Keresés</title>
+</head>
+<body>
+    <div class="container">
+        <div class="col-5 my-3">
+            <label for="userID">Kérem a felhasználó sorszámát (1-30):</label>
+            <input type="number" min="1" max="30" id="userID" name="userID" class="form-control">
+            <button class="btn btn-primary mt-2" onclick="kereses()">Keresés</button>
+        </div>
+        <div class="col-5">
+            <h3>Felhasználó adatai</h3>
+            <p><strong>Id:</strong> <span id="id"></span></p>
+            <p><strong>Teljes név:</strong> <span id="nev"></span></p>
+            <p><strong>Telefonszám:</strong> <span id="telefon"></span></p>
+            <p><strong>Email:</strong> <span id="email"></span></p>
+            <p><strong>Cím:</strong> <span id="cim"></span></p>
+            <p><strong>Geolokáció:</strong> <span id="geo"></span></p>
+            <p><strong>Cég adatok:</strong> <span id="cegadat"></span></p>
+        </div>
+    </div>
+</body>
+<script src="script.js"></script>
+</html>
