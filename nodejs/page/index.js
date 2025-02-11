@@ -2,10 +2,8 @@ import express from "express";
 
 const app = express();
 
-app.use(express.static("views"));
-
 app.get("/index", (req, res) => {
-    res.sendFile(path.join(__dirname, "views", "index.html"));
+    res.sendFile("./views/index.html", { root: __dirname });
 });
 
 app.listen(3001, () => {

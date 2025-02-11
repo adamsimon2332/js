@@ -1,19 +1,18 @@
 import express from "express";
+import __dirname from "./util/rootpath.js"
 
 const app = express();
 
-app.use(express.static("views"));
-
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "views", "index.html"));
+    res.sendFile("./views/index.html", { root: __dirname });
 });
 
 app.get("/car", (req, res) => {
-    res.sendFile(path.join(__dirname, "views", "car.html"));
+    res.sendFile("./views/car.html", { root: __dirname });
 });
 
 app.use((req, res) => {
-    res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
+    res.status(404).sendFile("./views/404.html", { root: __dirname });
 });
 
 app.listen(3000, () => {
