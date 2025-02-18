@@ -13,10 +13,6 @@ const users = [
     { firstName: "Luna", lastName: "Lovegood" },
 ]
 
-app.get('/', (req, res) => {
-    res.sendFile('./views/index.html', {root: __dirname});
-});
-
 app.get('/users', (req, res) => {
     res.send(users)
 })
@@ -44,11 +40,15 @@ app.put('/users/:id', (req, res) => {
     const id = parseInt(req.params.id, 10);
     const { firstName, lastName } = req.body;
 
-    if (id >= 0 && id < users.length) {
-        users[id] = { firstName, lastName };
-        res.json(users[id]);
+    if (firstName && lastName) {
+        if (id >= 0 && id < users.length) {
+            users[id] = { firstName, lastName };
+            res.json(users[id]);
+        } else {
+            res.status(404).json({ message: "User not found" });
+        }
     } else {
-        res.status(404).json({ message: "User not found" });
+        res.status(400).json({ message: "Invalid user data" });
     }
 });
 
