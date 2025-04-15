@@ -1,0 +1,210 @@
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2c3e50;
+    --accent-color: #e74c3c;
+    --background-color: #f9f9f9;
+    --border-color: #ddd;
+    --text-color: #333;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border-radius: 5px;
+}
+
+.controls {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+.timetable-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+}
+
+th {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+td {
+    background-color: white;
+}
+
+.class-entry {
+    background-color: #e8f4fc;
+    border-radius: 4px;
+    padding: 8px;
+    position: relative;
+}
+
+.class-entry .subject {
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+.class-entry .teacher, .class-entry .room {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.class-actions {
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.edit-btn, .delete-btn {
+    font-size: 0.8rem;
+    padding: 3px 8px;
+}
+
+.edit-btn {
+    background-color: #f39c12;
+}
+
+.delete-btn {
+    background-color: var(--accent-color);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: black;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input, select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+#cancel-btn {
+    background-color: #95a5a6;
+}
+
+#confirm-yes {
+    background-color: var(--accent-color);
+}
+
+#confirm-no {
+    background-color: #95a5a6;
+}
+
+footer {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 1rem;
+    color: #666;
+    border-top: 1px solid var(--border-color);
+}
+
+@media (max-width: 768px) {
+    th, td {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+    
+    .class-entry {
+        padding: 5px;
+    }
+    
+    .class-entry .teacher, .class-entry .room {
+        font-size: 0.8rem;
+    }
+}
