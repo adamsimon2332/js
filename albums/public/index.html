@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zenekarok albumai</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Zenekarok albumai</h1>
+            <nav>
+                <button id="listAlbumsBtn" class="nav-btn active">Albumok listázása</button>
+                <button id="addAlbumBtn" class="nav-btn">Új album hozzáadása</button>
+            </nav>
+        </header>
+
+        <main>
+            <section id="albumListSection" class="section">
+                <h2>Albumok listája</h2>
+                <div id="albumList" class="album-grid">
+                    <div class="loading">Betöltés...</div>
+                </div>
+            </section>
+
+            <section id="addAlbumSection" class="section hidden">
+                <h2>Új album hozzáadása</h2>
+                <form id="addAlbumForm" class="album-form">
+                    <div class="form-group">
+                        <label for="band">Zenekar*:</label>
+                        <input type="text" id="band" name="band" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Album címe*:</label>
+                        <input type="text" id="title" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="releaseYear">Kiadás éve:</label>
+                        <input type="number" id="releaseYear" name="releaseYear" min="1900" max="2100">
+                    </div>
+                    <div class="form-group">
+                        <label for="genre">Műfaj:</label>
+                        <input type="text" id="genre" name="genre">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Mentés</button>
+                        <button type="reset" class="btn btn-secondary">Visszaállítás</button>
+                    </div>
+                </form>
+            </section>
+
+            <section id="viewAlbumSection" class="section hidden">
+                <h2>Album részletei</h2>
+                <div id="albumDetails" class="album-details">
+                </div>
+                <div class="action-buttons">
+                    <button id="editAlbumBtn" class="btn btn-primary">Szerkesztés</button>
+                    <button id="deleteAlbumBtn" class="btn btn-danger">Törlés</button>
+                    <button id="backToListBtn" class="btn btn-secondary">Vissza a listához</button>
+                </div>
+            </section>
+
+            <section id="editAlbumSection" class="section hidden">
+                <h2>Album szerkesztése</h2>
+                <form id="editAlbumForm" class="album-form">
+                    <input type="hidden" id="editAlbumId" name="id">
+                    <div class="form-group">
+                        <label for="editBand">Zenekar*:</label>
+                        <input type="text" id="editBand" name="band" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editTitle">Album címe*:</label>
+                        <input type="text" id="editTitle" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editReleaseYear">Kiadás éve:</label>
+                        <input type="number" id="editReleaseYear" name="releaseYear" min="1900" max="2100">
+                    </div>
+                    <div class="form-group">
+                        <label for="editGenre">Műfaj:</label>
+                        <input type="text" id="editGenre" name="genre">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Mentés</button>
+                        <button type="button" id="cancelEditBtn" class="btn btn-secondary">Mégsem</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+
+        <footer>
+            <p>Zenekarok albumai app: Simon Ádám</p>
+        </footer>
+    </div>
+
+
+    <div id="deleteModal" class="modal hidden">
+        <div class="modal-content">
+            <h3>Album törlése</h3>
+            <p>Biztosan törölni szeretnéd ezt az albumot?</p>
+            <div class="modal-actions">
+                <button id="confirmDeleteBtn" class="btn btn-danger">Igen, törlöm</button>
+                <button id="cancelDeleteBtn" class="btn btn-secondary">Mégsem</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalOverlay" class="modal-overlay hidden"></div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
