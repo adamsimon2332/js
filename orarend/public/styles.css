@@ -97,6 +97,15 @@ td {
     color: #666;
 }
 
+/* Add these styles to handle text overflow */
+.class-entry .subject,
+.class-entry .teacher,
+.class-entry .room {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .class-actions {
     margin-top: 5px;
     display: flex;

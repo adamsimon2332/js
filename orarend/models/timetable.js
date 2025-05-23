@@ -107,3 +107,15 @@ export async function getDays() {
     return [];
   }
 }
+
+export async function getEntryByDayAndHour(day, hour) {
+  try {
+    return await dbGet(
+      'SELECT * FROM timetable_entries WHERE day = ? AND hour = ?',
+      [day, hour]
+    );
+  } catch (error) {
+    console.error('Database error:', error);
+    return null;
+  }
+}

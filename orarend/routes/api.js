@@ -43,6 +43,11 @@ router.post('/entries', async (req, res) => {
       return res.status(400).json({ error: 'Nap, óra és tantárgy kötelező' });
     }
     
+    const existingEntry = await timetableModel.getEntryByDayAndHour(day, hour);
+    if (existingEntry) {
+      return res.status(409).json({ error: 'Erre az időpontra már létezik órarendi bejegyzés' });
+    }
+    
     const newEntry = await timetableModel.addEntry({ day, hour, subject, teacher, room });
     if (!newEntry) {
       return res.status(500).json({ error: 'Hiba az új óra hozzáadásánál' });

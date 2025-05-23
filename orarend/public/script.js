@@ -1,6 +1,10 @@
 const API_URL = 'http://localhost:3001/api';
 const DAYS = ['Hétfő', 'Kedd', 'Szerda', 'Csütörtök', 'Péntek'];
 const MAX_HOURS = 8;
+// Define character limits
+const MAX_SUBJECT_LENGTH = 20;
+const MAX_TEACHER_LENGTH = 30;
+const MAX_ROOM_LENGTH = 10;
 
 const timetableElement = document.getElementById('timetable');
 const addEntryButton = document.getElementById('add-entry-btn');
@@ -71,20 +75,23 @@ function createEntryElement(entry) {
     
     const subjectDiv = document.createElement('div');
     subjectDiv.className = 'subject';
-    subjectDiv.textContent = entry.subject;
+    subjectDiv.textContent = truncateText(entry.subject, MAX_SUBJECT_LENGTH);
+    subjectDiv.title = entry.subject; // Add title for hover text with full content
     entryDiv.appendChild(subjectDiv);
     
     if (entry.teacher) {
         const teacherDiv = document.createElement('div');
         teacherDiv.className = 'teacher';
-        teacherDiv.textContent = entry.teacher;
+        teacherDiv.textContent = truncateText(entry.teacher, MAX_TEACHER_LENGTH);
+        teacherDiv.title = entry.teacher; // Add title for hover text with full content
         entryDiv.appendChild(teacherDiv);
     }
     
     if (entry.room) {
         const roomDiv = document.createElement('div');
         roomDiv.className = 'room';
-        roomDiv.textContent = `Terem: ${entry.room}`;
+        roomDiv.textContent = `Terem: ${truncateText(entry.room, MAX_ROOM_LENGTH)}`;
+        roomDiv.title = `Terem: ${entry.room}`; // Add title for hover text with full content
         entryDiv.appendChild(roomDiv);
     }
     
@@ -108,6 +115,13 @@ function createEntryElement(entry) {
     return entryDiv;
 }
 
+// Add a helper function to truncate text
+function truncateText(text, maxLength) {
+    if (!text) return '';
+    if (text.length <= maxLength) return text;
+    return text.substring(0, maxLength - 3) + '...';
+}
+
 function setupEventListeners() {
     addEntryButton.addEventListener('click', openAddModal);
     
@@ -124,6 +138,32 @@ function setupEventListeners() {
         if (e.target === entryModal) closeModal();
         if (e.target === confirmModal) closeConfirmModal();
     });
+    
+    // Add maxlength attributes to input fields
+    document.getElementById('subject').setAttribute('maxlength', MAX_SUBJECT_LENGTH);
+    document.getElementById('teacher').setAttribute('maxlength', MAX_TEACHER_LENGTH);
+    document.getElementById('room').setAttribute('maxlength', MAX_ROOM_LENGTH);
+    
+    // Add input validation
+    document.getElementById('subject').addEventListener('input', function() {
+        validateFieldLength(this, MAX_SUBJECT_LENGTH);
+    });
+    
+    document.getElementById('teacher').addEventListener('input', function() {
+        validateFieldLength(this, MAX_TEACHER_LENGTH);
+    });
+    
+    document.getElementById('room').addEventListener('input', function() {
+        validateFieldLength(this, MAX_ROOM_LENGTH);
+    });
+}
+
+// Add a validation function
+function validateFieldLength(field, maxLength) {
+    if (field.value.length > maxLength) {
+        field.value = field.value.substring(0, maxLength);
+        showNotification(`A mező maximális hossza ${maxLength} karakter`, 'warning');
+    }
 }
 
 function openAddModal() {
@@ -206,7 +246,7 @@ async function addEntry(entryData) {
         showNotification('Óra sikeresen hozzáadva', 'success');
     } catch (error) {
         console.error('Hiba az új óra hozzáadásánál:', error);
-        showNotification('Hiba történt az óra hozzáadása közben', 'error');
+        showNotification('Hiba történt az óra hozzáadása közben, már van ebben az időpontban óra', 'error');
     }
 }
 
