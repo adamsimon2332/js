@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Blog</h1>
+        <nav>
+            <button id="showBlogsBtn" class="nav-btn active">Blog Bejegyzések</button>
+            <button id="showCreateBtn" class="nav-btn">Új Bejegyzés</button>
+            <button id="showUsersBtn" class="nav-btn">Felhasználók</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="blogSection" class="section active">
+            <h2>Blog Bejegyzések</h2>
+            <div id="blogList" class="blog-list"></div>
+        </section>
+
+        <section id="createSection" class="section">
+            <h2>Új Blog Bejegyzés</h2>
+            <form id="createBlogForm" class="blog-form">
+                <div class="form-group">
+                    <label for="authorSelect">Szerző:</label>
+                    <select id="authorSelect" required>
+                        <option value="">Válassz szerzőt...</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="titleInput">Cím:</label>
+                    <input type="text" id="titleInput" required>
+                </div>
+                <div class="form-group">
+                    <label for="categoryInput">Kategória:</label>
+                    <input type="text" id="categoryInput" required>
+                </div>
+                <div class="form-group">
+                    <label for="contentInput">Tartalom:</label>
+                    <textarea id="contentInput" rows="6" required></textarea>
+                </div>
+                <button type="submit">Bejegyzés Létrehozása</button>
+            </form>
+        </section>
+
+        <section id="editSection" class="section">
+            <h2>Blog Bejegyzés Szerkesztése</h2>
+            <form id="editBlogForm" class="blog-form">
+                <input type="hidden" id="editBlogId">
+                <div class="form-group">
+                    <label for="editTitleInput">Cím:</label>
+                    <input type="text" id="editTitleInput" required>
+                </div>
+                <div class="form-group">
+                    <label for="editCategoryInput">Kategória:</label>
+                    <input type="text" id="editCategoryInput" required>
+                </div>
+                <div class="form-group">
+                    <label for="editContentInput">Tartalom:</label>
+                    <textarea id="editContentInput" rows="6" required></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="submit">Módosítások Mentése</button>
+                    <button type="button" id="cancelEditBtn">Mégse</button>
+                </div>
+            </form>
+        </section>
+        <section id="usersSection" class="section">
+            <h2>Felhasználók</h2>
+            <div id="userList" class="user-list"></div>
+            
+            <h3>Új Felhasználó</h3>
+            <form id="createUserForm" class="user-form">
+                <div class="form-group">
+                    <label for="userNameInput">Név:</label>
+                    <input type="text" id="userNameInput" required>
+                </div>
+                <div class="form-group">
+                    <label for="userEmailInput">Email:</label>
+                    <input type="email" id="userEmailInput" required>
+                </div>
+                <button type="submit">Felhasználó Létrehozása</button>
+            </form>
+        </section>
+
+        <section id="editUserSection" class="section">
+            <h2>Felhasználó Szerkesztése</h2>
+            <form id="editUserForm" class="user-form">
+                <input type="hidden" id="editUserId">
+                <div class="form-group">
+                    <label for="editUserNameInput">Név:</label>
+                    <input type="text" id="editUserNameInput" required>
+                </div>
+                <div class="form-group">
+                    <label for="editUserEmailInput">Email:</label>
+                    <input type="email" id="editUserEmailInput" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit">Módosítások Mentése</button>
+                    <button type="button" id="cancelEditUserBtn">Mégse</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <div id="loading" class="loading">Betöltés...</div>
+    <div id="toast" class="toast"></div>
+
+    <footer>
+        <p>Készítette: Simon Ádám</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
