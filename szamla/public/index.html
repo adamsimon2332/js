@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Számlák kezelése</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Számlakezelő Rendszer</h1>
+
+  <section id="main-section">
+    <div class="tab-nav">
+      <button class="tab active" data-tab="szamlak">Számlák</button>
+      <button class="tab" data-tab="vevok">Vevők</button>
+      <button class="tab" data-tab="kiallitok">Kiállítók</button>
+    </div>    <div id="szamlak" class="tab-content active">
+      <h2>Számlák kezelése</h2>
+      
+      <div class="info-box">
+        <p><strong>Fontos tudnivalók:</strong></p>
+        <ul class="info-list">
+          <li>A kiállított számlákat módosítani nem lehet, csak stornózni</li>
+          <li>A fizetési határidő nem lehet több mint 30 nap a kiállítás dátumától</li>
+          <li>A számlákat a jogszabályok értelmében 5 évig meg kell őrizni</li>
+          <li>A teljesítés dátumától kezdődően ÁFA fizetési kötelezettség keletkezik</li>
+        </ul>
+      </div>
+      
+      <ul id="szamla-list"></ul>
+      
+      <h3>Új számla kiállítása</h3>
+      <form id="szamla-form">
+        <div class="form-group">
+          <label>Kiállító</label>
+          <select name="kiallito" required></select>
+        </div>
+        <div class="form-group">
+          <label>Vevő</label>
+          <select name="vevo" required></select>
+        </div>
+        <div class="form-group">
+          <label>Kelte</label>
+          <input name="kelte" type="date" required>
+        </div>
+        <div class="form-group">
+          <label>Teljesítés dátuma</label>
+          <input name="teljesites" type="date" required>
+        </div>
+        <div class="form-group">
+          <label>Fizetési határidő</label>
+          <input name="fizetesiHatarido" type="date" required>
+          <small>Maximum 30 nap a kiállítás dátumától</small>
+        </div>
+        <div class="form-group">
+          <label>Végösszeg (bruttó, Ft)</label>
+          <input name="vegosszeg" type="number" required>
+        </div>
+        <div class="form-group">
+          <label>ÁFA kulcs (%)</label>
+          <select name="afa" required>
+            <option value="27">27%</option>
+            <option value="18">18%</option>
+            <option value="5">5%</option>
+            <option value="0">0%</option>
+          </select>
+        </div>
+        <button type="submit">Számla kiállítása</button>
+      </form>
+    </div>
+
+    <div id="vevok" class="tab-content">
+      <h2>Vevők kezelése</h2>
+      <ul id="vevo-list"></ul>
+      <h3>Új vevő hozzáadása</h3>
+      <form id="vevo-form">
+        <div class="form-group">
+          <label>Név</label>
+          <input name="nev" required>
+        </div>
+        <div class="form-group">
+          <label>Cím</label>
+          <input name="cim" required>
+        </div>
+        <div class="form-group">
+          <label>Adószám</label>
+          <input name="adoszam" required>
+        </div>
+        <div class="form-group">
+          <label>Telefon</label>
+          <input name="telefon">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input name="email">
+        </div>
+        <button type="submit">Vevő hozzáadása</button>
+      </form>
+    </div>
+
+    <div id="kiallitok" class="tab-content">
+      <h2>Kiállítók kezelése</h2>
+      <ul id="kiallito-list"></ul>
+      <h3>Új kiállító hozzáadása</h3>
+      <form id="kiallito-form">
+        <div class="form-group">
+          <label>Név</label>
+          <input name="nev" required>
+        </div>
+        <div class="form-group">
+          <label>Cím</label>
+          <input name="cim" required>
+        </div>
+        <div class="form-group">
+          <label>Adószám</label>
+          <input name="adoszam" required>
+        </div>
+        <div class="form-group">
+          <label>Bankszámlaszám</label>
+          <input name="bankszamlaszam" required>
+        </div>
+        <div class="form-group">
+          <label>Telefon</label>
+          <input name="telefon">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input name="email">
+        </div>
+        <button type="submit">Kiállító hozzáadása</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Számla részletes nézet modal -->
+  <div id="szamla-details" class="szamla-details">
+    <button class="close-button">&times;</button>
+    <h3>Számla részletei <span id="storno-label-modal" class="storno-label" style="display:none;">STORNÓ</span></h3>
+    <div class="szamla-header">
+      <div class="kiallito-info">
+        <h4>Kiállító adatai</h4>
+        <p class="kiallito-nev"></p>
+        <p class="kiallito-cim"></p>
+        <p class="kiallito-adoszam"></p>
+        <p class="kiallito-bankszamlaszam"></p>
+        <p class="kiallito-telefon"></p>
+        <p class="kiallito-email"></p>
+      </div>
+      <div class="vevo-info">
+        <h4>Vevő adatai</h4>
+        <p class="vevo-nev"></p>
+        <p class="vevo-cim"></p>
+        <p class="vevo-adoszam"></p>
+        <p class="vevo-telefon"></p>
+        <p class="vevo-email"></p>
+      </div>
+    </div>
+    <div class="szamla-dates">
+      <div class="date-box">
+        <p class="date-label">Számla kelte</p>
+        <p class="date-value kelte"></p>
+      </div>
+      <div class="date-box">
+        <p class="date-label">Teljesítés dátuma</p>
+        <p class="date-value teljesites"></p>
+      </div>
+      <div class="date-box">
+        <p class="date-label">Fizetési határidő</p>
+        <p class="date-value fizetesi-hatarido"></p>
+      </div>
+    </div>
+    <div class="szamla-totals">
+      <p>Nettó összeg: <span class="netto-osszeg"></span> Ft</p>
+      <p>ÁFA (<span class="afa-kulcs"></span>%): <span class="afa-osszeg"></span> Ft</p>
+      <p><strong>Bruttó összeg: <span class="brutto-osszeg"></span> Ft</strong></p>
+    </div>
+    <div class="szamla-actions" id="szamla-actions">
+      <button class="storno" id="storno-button">Számla stornózása</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

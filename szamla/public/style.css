@@ -1,0 +1,381 @@
+body { 
+  font-family: Arial, sans-serif; 
+  background: #f8f8f8; 
+  margin: 0; 
+  padding: 0; 
+}
+h1 { 
+  background: #2d3e50; 
+  color: #fff; 
+  margin: 0; 
+  padding: 1rem; 
+  text-align: center;
+}
+section { 
+  background: #fff; 
+  margin: 2rem auto; 
+  padding: 1rem 2rem; 
+  border-radius: 8px; 
+  max-width: 800px; 
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
+}
+h2 { 
+  color: #2d3e50; 
+  border-bottom: 2px solid #2d3e50; 
+  padding-bottom: 0.5rem;
+}
+form { 
+  display: flex; 
+  gap: 0.5rem; 
+  flex-wrap: wrap; 
+  margin-bottom: 1rem; 
+  align-items: flex-end;
+}
+input, select, button { 
+  padding: 0.5rem; 
+  border-radius: 4px; 
+  border: 1px solid #ccc; 
+}
+button {
+  background-color: #2d3e50;
+  color: white;
+  cursor: pointer;
+  border: none;
+  padding: 0.6rem 1rem;
+  transition: background-color 0.2s;
+}
+button:hover {
+  background-color: #3e5269;
+}
+ul { 
+  list-style: none; 
+  padding: 0; 
+}
+li { 
+  margin-bottom: 0.8rem; 
+  background: #f0f4f8; 
+  padding: 0.8rem; 
+  border-radius: 4px; 
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+button.storno { 
+  background: #e74c3c; 
+  color: #fff; 
+  border: none; 
+  margin-left: 10px;
+}
+button.storno:hover {
+  background: #c0392b;
+}
+li.stornovalva { 
+  background: #f8f0f0;
+  color: #888;
+  position: relative;
+}
+li.stornovalva:after {
+  content: "STORNÓZVA";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-30deg);
+  font-size: 2rem;
+  font-weight: bold;
+  color: rgba(231, 76, 60, 0.4);
+  border: 3px solid rgba(231, 76, 60, 0.4);
+  padding: 0.5rem 1rem;
+  pointer-events: none;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.form-group label {
+  font-size: 0.8rem;
+  color: #555;
+}
+.szamla-details {
+  margin-top: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1.5rem;
+  display: none;
+  position: relative;
+}
+.szamla-details h3 {
+  text-align: center;
+  margin-top: 0;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1rem;
+}
+.szamla-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+.szamla-header div {
+  width: 48%;
+}
+.szamla-header h4 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+.szamla-dates {
+  margin-bottom: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.date-box {
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  border-radius: 4px;
+  text-align: center;
+}
+.date-box p {
+  margin: 0.2rem 0;
+}
+.date-label {
+  font-weight: bold;
+  font-size: 0.8rem;
+  color: #555;
+}
+.date-value {
+  font-size: 1rem;
+}
+.szamla-totals {
+  margin-top: 1.5rem;
+  text-align: right;
+  border-top: 1px solid #eee;
+  padding-top: 1rem;
+}
+.szamla-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #777;
+}
+.tab-nav {
+  display: flex;
+  border-bottom: 2px solid #ddd;
+  margin-bottom: 1.5rem;
+}
+.tab {
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-weight: bold;
+  color: #555;
+}
+.tab.active {
+  border-bottom: 3px solid #2d3e50;
+  color: #2d3e50;
+  margin-bottom: -2px;
+}
+.tab-content {
+  display: none;
+}
+.tab-content.active {
+  display: block;
+}
+
+.szamla-details {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  width: 700px;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  display: none;
+}
+
+.szamla-details h3 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  border-bottom: 2px solid #2d3e50;
+  padding-bottom: 0.5rem;
+}
+
+.szamla-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.kiallito-info, .vevo-info {
+  width: 45%;
+}
+
+.kiallito-info h4, .vevo-info h4 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #2d3e50;
+}
+
+.szamla-dates {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.date-box {
+  width: 30%;
+  text-align: center;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.date-label {
+  color: #777;
+  font-size: 0.9em;
+  margin-bottom: 0.3rem;
+}
+
+.szamla-totals {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #ddd;
+}
+
+.szamla-totals p {
+  text-align: right;
+  margin: 0.5rem 0;
+  font-size: 1.1em;
+}
+
+.szamla-totals p:last-child {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #2d3e50;
+}
+
+.close-button {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #555;
+}
+
+.szamla-actions {
+  margin-top: 2rem;
+  text-align: right;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .szamla-details, .szamla-details * {
+    visibility: visible;
+  }
+  .szamla-details {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    box-shadow: none;
+    border: none;
+  }
+  .close-button, .szamla-actions {
+    display: none;
+  }
+}
+.storno-label {
+  background-color: #e74c3c !important;
+  color: white !important;
+  padding: 0.3rem 0.6rem !important;
+  border-radius: 4px !important;
+  font-size: 1.2rem !important;
+  margin-left: 1rem !important;
+  border: 2px solid #c0392b !important;
+  display: inline-block !important;
+  font-weight: bold !important;
+  z-index: 9999 !important;
+}
+.szamla-item {
+  cursor: pointer;
+}
+
+.info-box {
+  background-color: #f1f8ff;
+  border-left: 4px solid #1a73e8;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 4px;
+}
+
+.info-box p {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.info-list {
+  margin: 0.5rem 0 0 1rem;
+  padding-left: 1rem;
+  list-style-type: disc;
+}
+
+.info-list li {
+  margin-bottom: 0.3rem;
+  background: none;
+  padding: 0;
+  display: list-item;
+}
+
+small {
+  color: #666;
+  font-size: 0.8rem;
+}
+
+button.uj-szamla {
+  background: #27ae60;
+  color: white;
+  border: none;
+  margin-left: 10px;
+}
+
+button.uj-szamla:hover {
+  background: #219653;
+}
+.delete-btn {
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 4px;
+  margin-left: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+.delete-btn:hover {
+  background: #c0392b;
+}

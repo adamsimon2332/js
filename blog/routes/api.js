@@ -3,7 +3,6 @@ import * as blogModel from '../models/blog.js';
 
 const router = express.Router();
 
-// User routes
 router.get('/users', (req, res) => {
     try {
         const users = blogModel.getUsers();
@@ -69,7 +68,6 @@ router.delete('/users/:id', (req, res) => {
     }
 });
 
-// Blog routes
 router.get('/blogs', (req, res) => {
     try {
         const blogs = blogModel.getBlogs();
