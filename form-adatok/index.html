@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adatbekérés</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <form id="data-form">
+        <label for="name">Név:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="city">Település:</label>
+        <input type="text" id="city" name="city" required />
+
+        <label for="zipcode">Irányítószám:</label>
+        <input type="text" id="zipcode" name="zipcode" required />
+
+        <label for="street">Közterület:</label>
+        <input type="text" id="street" name="street" required />
+
+        <label for="house-number">Házszám:</label>
+        <input type="text" id="house-number" name="house-number" required />
+
+        <button type="submit">Mentés</button>
+      </form>
+
+      <div id="data-display">
+        <h2>Tárolt adatok:</h2>
+        <p id="stored-data">Nincs adat</p>
+      </div>
+
+      <button id="clear-data">Adatok törlése</button>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
