@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Viccek</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Viccek</h1>
+    <nav class="menu">
+      <button id="randomBtn" class="menu-btn">Random vicc</button>
+      <button id="byIdBtn" class="menu-btn">ID alapján</button>
+      <button id="byTypeBtn" class="menu-btn">Kategória alapján</button>
+      <button id="tenBtn" class="menu-btn">Tíz vicc</button>
+    </nav>
+    <div id="inputFields">
+      <input type="number" id="jokeIdInput" placeholder="Írd be a vicc ID-jét" style="display:none;">
+      <input type="text" id="jokeTypeInput" placeholder="Írd be a vicc kategóriáját" style="display:none;">
+    </div>
+    <div class="actions">
+      <button id="fetchBtn">Vicc lekérése</button>
+    </div>
+    <section id="jokeDisplay" class="joke-display">
+    </section>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
