@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belépés</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            max-width: 100%;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-size: 14px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="password"] {
+            font-family: 'Arial', sans-serif;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        .toggle-btn {
+            background-color: #3498db;
+            margin-top: 10px;
+            width: 100%;
+            border: none;
+            padding: 10px;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .toggle-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .form-container {
+            display: none;
+        }
+
+        .form-container.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Belépés</h2>
+        
+        <div class="form-container active" id="login-form">
+            <form id="login" onsubmit="return validateLogin(event)">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="login-email" name="email" placeholder="Email cím" required>
+                    <div id="login-email-error" class="error"></div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Jelszó</label>
+                    <input type="password" id="login-password" name="password" placeholder="Jelszó" required>
+                    <div id="login-password-error" class="error"></div>
+                </div>
+                <button type="submit" class="btn">Bejelentkezés</button>
+            </form>
+            <button class="toggle-btn" onclick="toggleForm()">Még nincs fiókod? Regisztrálj!</button>
+        </div>
+
+        <div class="form-container" id="register-form">
+            <form id="register" onsubmit="return validateRegister(event)">
+                <div class="form-group">
+                    <label for="register-email">Email</label>
+                    <input type="email" id="register-email" name="email" placeholder="Email cím" required>
+                    <div id="register-email-error" class="error"></div>
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Jelszó</label>
+                    <input type="password" id="register-password" name="password" placeholder="Jelszó" required>
+                    <div id="register-password-error" class="error"></div>
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Jelszó megerősítése</label>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Jelszó megerősítése" required>
+                    <div id="confirm-password-error" class="error"></div>
+                </div>
+                <button type="submit" class="btn">Regisztrálás</button>
+            </form>
+            <button class="toggle-btn" onclick="toggleForm()">Már van fiókod? Bejelentkezés</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleForm() {
+            const loginForm = document.getElementById('login-form');
+            const registerForm = document.getElementById('register-form');
+            loginForm.classList.toggle('active');
+            registerForm.classList.toggle('active');
+        }
+
+        async function validateLogin(event) {
+            event.preventDefault();
+            let valid = true;
+
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            const emailError = document.getElementById('login-email-error');
+            const passwordError = document.getElementById('login-password-error');
+
+            emailError.textContent = '';
+            passwordError.textContent = '';
+
+            const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailRegex.test(email)) {
+                emailError.textContent = 'Érvénytelen email cím.';
+                valid = false;
+            }
+
+            if (password.length < 6) {
+                passwordError.textContent = 'A jelszónak legalább 6 karakternek kell lennie.';
+                valid = false;
+            }
+
+            if (valid) {
+                try {
+                    const response = await fetch('/api/login', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email, password })
+                    });
+
+                    const data = await response.json();
+                    if (data.success) {
+                        alert(data.message);
+                    } else {
+                        alert(data.error || "Hiba történt.");
+                    }
+                } catch (error) {
+                    console.error("Error during login:", error);
+                    alert("Hiba történt a bejelentkezés során.");
+                }
+            }
+
+            return valid;
+        }
+
+        async function validateRegister(event) {
+            event.preventDefault();
+            let valid = true;
+
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            const emailError = document.getElementById('register-email-error');
+            const passwordError = document.getElementById('register-password-error');
+            const confirmPasswordError = document.getElementById('confirm-password-error');
+
+            emailError.textContent = '';
+            passwordError.textContent = '';
+            confirmPasswordError.textContent = '';
+
+            const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailRegex.test(email)) {
+                emailError.textContent = 'Érvénytelen email cím.';
+                valid = false;
+            }
+
+            if (password.length < 6) {
+                passwordError.textContent = 'A jelszónak legalább 6 karakternek kell lennie.';
+                valid = false;
+            }
+
+            if (password !== confirmPassword) {
+                confirmPasswordError.textContent = 'A két jelszó nem egyezik.';
+                valid = false;
+            }
+
+            if (valid) {
+                try {
+                    const response = await fetch('/api/register', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email, password })
+                    });
+
+                    const data = await response.json();
+                    if (data.success) {
+                        alert(data.message);
+                    } else {
+                        alert(data.error || "Hiba történt.");
+                    }
+                } catch (error) {
+                    alert("Hiba történt a regisztráció során.");
+                }
+            }
+
+            return valid;
+        }
+    </script>
+
+</body>
+</html>
