@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <header>Counter</header>
+
+  <main>
+    <div class="counter-container">
+      <div class="label">Counter value:</div>
+      <div id="counter" class="value">0</div>
+
+      <div class="row">
+        <button onclick="change(-1)">-</button>
+        <button onclick="change(1)">+</button>
+      </div>
+
+      <div class="row">
+        <button class="small" onclick="change(-10)">-10</button>
+        <button class="small" onclick="change(10)">+10</button>
+      </div>
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
