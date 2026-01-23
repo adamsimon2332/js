@@ -1,0 +1,56 @@
+﻿namespace szamnegyesek
+{
+    public partial class Form1 : Form
+    {
+        private Label[,] gridLabels = new Label[3, 3];
+        private Button buttonA, buttonB, buttonC, buttonD, buttonReset;
+
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        // Növeli a megfelelő mezők értékét gomb A-ra
+        private void buttonA_Click(object sender, EventArgs e)
+        {
+            // Példa: növeli az első sor minden elemét
+            for (int j = 0; j < 3; j++)
+                IncrementLabel(0, j);
+        }
+        // Növeli a megfelelő mezők értékét gomb B-re
+        private void buttonB_Click(object sender, EventArgs e)
+        {
+            // Példa: növeli a második sort
+            for (int j = 0; j < 3; j++)
+                IncrementLabel(1, j);
+        }
+        // Növeli a megfelelő mezők értékét gomb C-re
+        private void buttonC_Click(object sender, EventArgs e)
+        {
+            // Példa: növeli a harmadik sort
+            for (int j = 0; j < 3; j++)
+                IncrementLabel(2, j);
+        }
+        // Növeli a megfelelő mezők értékét gomb D-re
+        private void buttonD_Click(object sender, EventArgs e)
+        {
+            // Példa: növeli a főátlót
+            for (int i = 0; i < 3; i++)
+                IncrementLabel(i, i);
+        }
+        // Nullázza a táblát
+        private void buttonReset_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 3; i++)
+                for (int j = 0; j < 3; j++)
+                    gridLabels[i, j].Text = "0";
+        }
+        // Segédfüggvény egy mező növeléséhez
+        private void IncrementLabel(int i, int j)
+        {
+            int value = int.Parse(gridLabels[i, j].Text);
+            value++;
+            gridLabels[i, j].Text = value.ToString();
+        }
+    }
+}
