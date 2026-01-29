@@ -1,0 +1,83 @@
+﻿namespace szamnegyesek
+{
+    partial class Form1
+    {
+        /// <summary>
+        ///  Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        ///  Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        ///  Required method for Designer support - do not modify
+        ///  the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            gridLabels = new Label[3, 3];
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    gridLabels[i, j] = new Label();
+                    gridLabels[i, j].Text = "0";
+                    gridLabels[i, j].Width = 40;
+                    gridLabels[i, j].Height = 40;
+                    gridLabels[i, j].TextAlign = ContentAlignment.MiddleCenter;
+                    gridLabels[i, j].BorderStyle = BorderStyle.FixedSingle;
+                    gridLabels[i, j].Font = new Font("Segoe UI", 16);
+                    gridLabels[i, j].Location = new Point(30 + j * 50, 30 + i * 50);
+                    this.Controls.Add(gridLabels[i, j]);
+                }
+            }
+            buttonA = new Button();
+            buttonA.Text = "A";
+            buttonA.Location = new Point(200, 30);
+            buttonA.Click += buttonA_Click;
+            this.Controls.Add(buttonA);
+            buttonB = new Button();
+            buttonB.Text = "B";
+            buttonB.Location = new Point(200, 80);
+            buttonB.Click += buttonB_Click;
+            this.Controls.Add(buttonB);
+            buttonC = new Button();
+            buttonC.Text = "C";
+            buttonC.Location = new Point(200, 130);
+            buttonC.Click += buttonC_Click;
+            this.Controls.Add(buttonC);
+            buttonD = new Button();
+            buttonD.Text = "D";
+            buttonD.Location = new Point(200, 180);
+            buttonD.Click += buttonD_Click;
+            this.Controls.Add(buttonD);
+            buttonReset = new Button();
+            buttonReset.Text = "Nullázás";
+            buttonReset.Location = new Point(30, 200);
+            buttonReset.Click += buttonReset_Click;
+            this.Controls.Add(buttonReset);
+            this.ClientSize = new Size(300, 260);
+            this.Text = "3x3 Számnégyesek";
+            this.ResumeLayout(false);
+        }
+
+        #endregion
+
+        private Label[,] gridLabels;
+        private Button buttonA, buttonB, buttonC, buttonD, buttonReset;
+    }
+}
