@@ -1,0 +1,61 @@
+id,datum,targy,csoport,terem,tanar,ferohely,orasorszam
+1,2028.11-08,matematika,9.B2,9.B,Matematikus Márton,15,4
+2,2028.11-08,angol,10.C1,nyelvi5,Angol Anna,10,4
+3,2028.11-08,német,10.C2,10.C,Német Nelli,10,4
+4,2028.11-08,digitális kultúra,9.D2,i1,Rendszergazda Rudolf,10,4
+5,2028.11-08,fizika,9.B1,Jedlik,Falusi Franciska,15,4
+6,2028.11-08,német,11.BDE,11.B,Nagy Nelli,10,5
+7,2028.11-08,fizika,10.B,Jedlik,Kerepesi Károly,15,5
+8,2028.11-08,biológia,10.D,Biológia,Biológus Boglárka,15,5
+9,2028.11-08,angol,11.BDE,nyelvi8,Kertvárosi Krisztina,10,5
+10,2028.11-08,matematika,10.B2,10.B,Földvári Franciska,15,5
+11,2028.11-09,digitális kultúra,10.D1,i1,Rendszergazda Rudolf,10,4
+12,2028.11-09,biológia,9.B2,Kövesi,Pilisi Panna,15,4
+13,2028.11-09,német,12.C2,nyelvi4,Hantosi Helga,10,4
+14,2028.11-09,kémia,10.B2,labor2,Kapolcsi Kende,15,4
+15,2028.11-09,matematika,10.B,10.B,Matematikos Mártonné,15,4
+16,2028.11-09,angol,11.C1,nyelvi3,Aggteleki Anna,10,5
+17,2028.11-09,angol,9.BD,nyelvi1,Boros Beáta,10,5
+18,2028.11-09,biológia,9.E,Kövesi,Tordasi Tímea,15,5
+19,2028.11-09,földrajz,10.B,10.B,Főldrajz Franciska,15,5
+20,2028.11-09,digitális kultúra,9.A1,i3,Számító Szilvia,10,5
+21,2028.11-10,angol,11.C1,nyelvi2,Aggteleki Anna,10,4
+22,2028.11-10,matematika,10.B1,10.B,Matematikos Mártonné,15,4
+23,2028.11-10,fizika,10.B2,Vermes,Földvári Franciska,15,4
+24,2028.11-10,angol,10.C1,nyelvi1,Angol Anna,10,4
+25,2028.11-10,kémia,9.B2,labor1,Kapolcsi Kende,15,4
+26,2028.11-10,német,11.C,11.C,Bagaméri Borbála,15,5
+27,2028.11-10,biológia,10.B1,labor2,Bajai Bernadett,15,5
+28,2028.11-10,matematika,9.D2,10.C,Metematikus Maja,15,5
+29,2028.11-10,matematika,10.A,10.A,Matematikus Márton,10,5
+30,2028.11-10,digitális kultúra,10.A1,i3,Számító Szilvia,10,5
+31,2028.11-27,digitális kultúra,9.D1,i1,Rendszergazda Rudolf,10,4
+32,2028.11-27,fizika,10.B2,Vermes,Földvári Franciska,15,4
+33,2028.11-27,olasz,9.BD,9.D,Olasz Orsolya,15,4
+34,2028.11-27,kémia,9.B2,labor1,Kapolcsi Kende,15,4
+35,2028.11-27,matematika,10.B1,10.B,Matematikos Mártonné,15,4
+36,2028.11-27,angol,11.C1,nyelvi5,Aggteleki Anna,10,5
+37,2028.11-27,német,11.C2,11.C,Bagaméri Borbála,15,5
+38,2028.11-27,biológia,10.B2,10.B,Kerepesi Károly,15,5
+39,2028.11-27,matematika,11.B1,9.B,Matematikus Márton,15,5
+40,2028.11-27,fizika,9.A,Vermes,Fizikus Ferenc,10,5
+41,2028.11-28,német,9.C2,6.A,Nagy Nelli,15,4
+42,2028.11-28,matematika,9.C1,9.C,Markazi Margit,15,4
+43,2028.11-28,fizika,9.B2,Jedlik,Kerepesi Károly,15,4
+44,2028.11-28,angol,10.BD,7.A,Alsófalvi Adrienn,10,4
+45,2028.11-28,digitális kultúra,9.A1,i3,Számító Szilvia,10,4
+46,2028.11-28,digitális kultúra,11.C2,i2,Majosházi Mariska,10,5
+47,2028.11-28,földrajz,9.C,Kövesi,Főldrajz Franciska,10,5
+48,2028.11-28,matematika,9.B1,9.B,Barnáné Zöld Piroska,15,5
+49,2028.11-28,angol,11.BDE,11.D,Kertvárosi Krisztina,15,5
+50,2028.11-28,kémia,9.B1,labor1,Kémikus Katalin,15,5
+51,2028.11-29,matematika,9.B1,9.B,Matematikus Márton,15,4
+52,2028.11-29,angol,10.C1,nyelvi5,Angol Anna,10,4
+53,2028.11-29,német,10.C2,10.C,Német Nelli,15,4
+54,2028.11-29,digitális kultúra,9.D1,i1,Rendszergazda Rudolf,10,4
+55,2028.11-29,fizika,9.B1,Jedlik,Falusi Franciska,15,4
+56,2028.11-29,angol,9BD1,12.C,Acsai Antal,15,5
+57,2028.11-29,angol,9BD2,11.C,Olasz Orsolya,15,5
+58,2028.11-29,biológia,9A,Kövesi,Bajai Bernadett,15,5
+59,2028.11-29,digitális kultúra,10C2,i3,Számító Szilvia,10,5
+60,2028.11-29,matematika,10.B2,10.B,Földvári Franciska,15,5

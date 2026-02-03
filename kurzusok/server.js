@@ -86,14 +86,14 @@ function initDatabase() {
 
 initDatabase();
 
-app.get("/students/:id", (req, res) => {
-  const student = db
-    .prepare("SELECT * FROM students WHERE id = ?")
-    .get(req.params.id);
-  if (!student) {
-    return res.status(404).json({ message: "Student not found" });
+app.get("/cities/:name", (req, res) => {
+  const city = db
+    .prepare("SELECT * FROM cities WHERE name = ?")
+    .get(req.params.name);
+  if (!city) {
+    return res.status(404).json({ message: "City not found" });
   }
-  res.json(student);
+  res.json(city);
 });
 
 app.get("/subjects", (req, res) => {
@@ -167,7 +167,7 @@ app.post("/courses", (req, res) => {
   });
 });
 
-const PORT = 3030;
+const PORT = 3321;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
